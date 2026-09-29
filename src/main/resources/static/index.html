@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JWT Nimbus - Đăng nhập</title>
+    <style>
+        :root { color-scheme: light; font-family: Inter, system-ui, sans-serif; }
+        body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: linear-gradient(135deg, #e0ecff, #f5f3ff); color: #172554; }
+        main { width: min(430px, calc(100% - 32px)); background: white; border-radius: 18px; padding: 32px; box-shadow: 0 20px 50px #1e3a8a2b; }
+        h1 { margin: 0; font-size: 1.8rem; } p { color: #475569; line-height: 1.5; }
+        .tabs { display: flex; gap: 8px; margin: 24px 0 16px; }
+        .tab, button { border: 0; border-radius: 9px; padding: 11px 15px; font: inherit; font-weight: 650; cursor: pointer; }
+        .tab { background: #e2e8f0; color: #334155; } .tab.active { background: #1d4ed8; color: white; }
+        form { display: grid; gap: 13px; } form[hidden] { display: none; }
+        label { display: grid; gap: 5px; font-size: .9rem; font-weight: 600; color: #334155; }
+        input { padding: 11px; border: 1px solid #cbd5e1; border-radius: 9px; font: inherit; }
+        button[type="submit"] { background: #1d4ed8; color: white; margin-top: 4px; }
+        #message { min-height: 24px; margin-top: 16px; color: #b91c1c; font-size: .92rem; }
+        .note { font-size: .85rem; margin-bottom: 0; }
+    </style>
+</head>
+<body>
+<main>
+    <h1>JWT Nimbus Demo</h1>
+    <p>Đăng ký hoặc đăng nhập để nhận JWT và xem hồ sơ được bảo vệ.</p>
+
+    <div class="tabs" role="tablist">
+        <button class="tab active" type="button" data-form="login-form">Đăng nhập</button>
+        <button class="tab" type="button" data-form="signup-form">Đăng ký</button>
+    </div>
+
+    <form id="login-form">
+        <label>Email <input name="email" type="email" required autocomplete="email"></label>
+        <label>Mật khẩu <input name="password" type="password" required autocomplete="current-password"></label>
+        <button type="submit">Đăng nhập</button>
+    </form>
+
+    <form id="signup-form" hidden>
+        <label>Họ và tên <input name="fullName" required maxlength="50" autocomplete="name"></label>
+        <label>Email <input name="email" type="email" required autocomplete="email"></label>
+        <label>Mật khẩu <input name="password" type="password" required minlength="8" autocomplete="new-password"></label>
+        <button type="submit">Tạo tài khoản</button>
+    </form>
+    <div id="message" aria-live="polite"></div>
+    <p class="note">Token được lưu trong sessionStorage cho mục đích minh họa.</p>
+</main>
+<script src="/main.js"></script>
+</body>
+</html>

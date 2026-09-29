@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JWT Nimbus - Hồ sơ</title>
+    <style>
+        body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #eff6ff; color: #172554; font-family: Inter, system-ui, sans-serif; }
+        main { width: min(820px, calc(100% - 32px)); padding: 32px; background: white; border-radius: 18px; box-shadow: 0 20px 50px #1e3a8a2b; }
+        h1 { margin-top: 0; } dl { display: grid; grid-template-columns: 130px 1fr; gap: 12px; } dt { font-weight: 700; color: #475569; } dd { margin: 0; word-break: break-word; }
+        button { padding: 11px 15px; border: 0; border-radius: 9px; background: #1d4ed8; color: white; font: inherit; font-weight: 650; cursor: pointer; }
+        #error { color: #b91c1c; }
+        .token-panel { margin-top: 28px; padding-top: 22px; border-top: 1px solid #cbd5e1; }
+        .token-panel h2 { margin: 0 0 8px; font-size: 1.15rem; } .token-panel p { color: #475569; }
+        textarea, pre { width: 100%; box-sizing: border-box; border: 1px solid #cbd5e1; border-radius: 9px; background: #f8fafc; font-family: ui-monospace, Consolas, monospace; font-size: .82rem; }
+        textarea { min-height: 115px; padding: 12px; resize: vertical; word-break: break-all; } pre { margin: 8px 0 18px; padding: 12px; overflow: auto; white-space: pre-wrap; }
+        .actions { display: flex; gap: 10px; flex-wrap: wrap; } #copy-token { background: #0f766e; }
+    </style>
+</head>
+<body>
+<main>
+    <h1>Hồ sơ đã xác thực</h1>
+    <p id="loading">Đang kiểm tra JWT...</p>
+    <dl id="profile" hidden>
+        <dt>Họ và tên</dt><dd id="fullName"></dd>
+        <dt>Email</dt><dd id="email"></dd>
+        <dt>Ngày tạo</dt><dd id="createdAt"></dd>
+    </dl>
+    <p id="error" hidden></p>
+    <section class="token-panel" id="token-panel" hidden>
+        <h2>JWT hiện tại</h2>
+        <p>Đây là token đang lưu trong <code>sessionStorage</code> và được gửi theo dạng <code>Authorization: Bearer token</code>.</p>
+        <textarea id="current-token" readonly aria-label="JWT hiện tại"></textarea>
+    </section>
+    <div class="actions">
+        <button id="copy-token" type="button">Sao chép token</button>
+        <button id="logout" type="button">Đăng xuất</button>
+    </div>
+</main>
+<script src="/main.js"></script>
+</body>
+</html>
